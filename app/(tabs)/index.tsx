@@ -1,74 +1,118 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React from 'react';
+import { ImageBackground, Text, Image, TouchableOpacity, View, ScrollView, TextInput, StyleSheet } from 'react-native';
+import { Stack } from 'expo-router';
+import Colors from '@/constants/Colors';
+import { Ionicons } from '@expo/vector-icons';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
+const Page = () => {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+    <>
+      <ImageBackground
+        source={require('../../assets/images/Rectangle 1.png')} // Remplace par ton image
+        style={styles.backgroundImage}
+        resizeMode="cover" // Assure que l'image couvre toute la zone
+      >
+        {/* Le composant Stack.Screen configure l'entête de l'écran. Il fait partie d'une navigation, probablement de React Navigation. */}
+        <Stack.Screen
+          options={{
+            headerTransparent: true, // L'entête de l'écran est transparente
+            headerTitle: '', // Pas de titre dans l'entête
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => {}} style={{ marginLeft: 20 }}>
+                <Image
+                  source={{ uri: 'https://xsgames.co/randomusers/avatar.php?g=female' }} // Avatar utilisateur (image aléatoire)
+                  style={{ width: 40, height: 40, borderRadius: 10 }} // Style de l'image de l'avatar (cercle)
+                />
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <TouchableOpacity
+                onPress={() => {}}
+                style={{
+                  marginRight: 20,
+                  backgroundColor: Colors.white,
+                  padding: 10,
+                  borderRadius: 10,
+                  shadowColor: '#171717',
+                  shadowOffset: { width: 2, height: 4 },
+                  shadowOpacity: 0.2,
+                  shadowRadius: 3,
+                }}
+              >
+                <Ionicons name="notifications" size={20} color={Colors.black} />
+              </TouchableOpacity>
+            ),
+            headerTitle: () => (
+              <Image
+                source={require('../../assets/images/logo_santaLucia.png')} // Assurez-vous que le chemin d'image est correct
+                style={{ width: 100, height: 60, marginTop: 15 }} // Ajuste la taille du logo
+              />
+            ),
+          }}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+        
+        {/* ScrollView avec contenu */}
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.container}>
+            <Text style={styles.headingText}>Explorez nos différents produits !</Text>
+          </View>
+
+          <View style={styles.searchSectionWrapper}>
+            <View style={styles.searchBar}>
+              <Ionicons name="search" size={18} style={{ marginRight: 10, color: Colors.black }} />
+              <TextInput placeholder="Recherche un produit" />
+            </View>
+
+            <TouchableOpacity onPress={() => {}}>
+              <Ionicons name="options" size={20} style={styles.filterButton} />
+            </TouchableOpacity>
+          </View>
+
+          {/* <Listing listings={ListingData} category={Categories} /> */}
+        </ScrollView>
+      </ImageBackground>
+
+      <View>
+        <Text>Le monde vous salut </Text>
+      </View>
+    </>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  scrollContainer: {
+    flexGrow: 1, // Permet à la ScrollView de s'étendre au maximum sans se restreindre à la taille du contenu
+    paddingBottom: 20, // Pour éviter que le bas de la page soit collé au bord de l'écran
+  },
+  container: {
+    padding: 20,
+    marginTop: 100,
+    backgroundColor: '#fff2f2', // Couleur de fond pour le contenu
+  },
+  headingText: {
+    fontSize: 25,
+    fontWeight: '800',
+    color: Colors.black, // Assure que le texte est visible
+  },
+  searchSectionWrapper: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+    marginVertical: 5,
+    gap: 20,
+    marginHorizontal: 10,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  searchBar: {
+    flex: 1,
+    flexDirection: 'row',
+    padding: 16,
+    backgroundColor: Colors.white,
+    borderRadius: 20,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  filterButton: {
+    backgroundColor: Colors.rose,
+    padding: 16,
+    borderRadius: 10,
+    color: Colors.white,
   },
 });
+
+export default Page;

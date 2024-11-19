@@ -1,45 +1,86 @@
-import { Tabs } from 'expo-router';
+import { View } from 'react-native';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Tabs } from 'expo-router';
+import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import Colors from '@/constants/Colors';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import Entypo from '@expo/vector-icons/Entypo';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function Layout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarBadgeStyle: {
+          backgroundColor: Colors.bgColor,
+          borderTopWidth: 0,
+          padding: 0,
+        },
+        tabBarActiveTintColor: Colors.black, // Couleur de l'icône active
+        tabBarInactiveTintColor: '#999', // Couleur des icônes inactives
+      }}
+    >
+      {/* Onglet "Acceuil" */}
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign name="home" size={30} color={color} />,
+          tabBarLabelStyle: { fontSize:12 },
         }}
       />
+
+      {/* Onglet "Bon Plans" */}
       <Tabs.Screen
-        name="explore"
+        name="Bon Plans"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="pricetag-outline" size={30} color={color} />,
+          tabBarLabelStyle: { fontSize:12 },
         }}
       />
+
+      {/* Onglet "Scanner" sans label */}
+      <Tabs.Screen
+        name="Scanner"
+        options={{
+          tabBarIcon: ({ color }) => (
+            <View
+              style={{
+                backgroundColor: Colors.rose,
+                paddingHorizontal: 14,
+                paddingVertical: 12,
+                borderRadius: 20,
+                height: 70,
+                width: 70,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <MaterialCommunityIcons name="data-matrix-scan" size={30} color={Colors.white} />
+            </View>
+          ),
+          tabBarLabelStyle: { color: Colors.white, fontSize:12 },
+        }}
+      />
+
+      {/* Onglet "Promotions" */}
+      <Tabs.Screen
+        name="Promotions"
+        options={{
+          tabBarIcon: ({ color }) => <Ionicons name="gift-sharp" size={30} color={color} />,
+          tabBarLabelStyle: { fontSize:12 },
+        }}
+      />
+
+
+      {/* Onglet "Plus" */}
+      <Tabs.Screen
+        name="Plus"
+        options={{
+          tabBarIcon: ({ color }) => <Entypo name="dots-three-horizontal" size={30} color="black" />,
+          tabBarLabelStyle: { fontSize:12 },
+        }}
+      />
+
     </Tabs>
   );
 }
