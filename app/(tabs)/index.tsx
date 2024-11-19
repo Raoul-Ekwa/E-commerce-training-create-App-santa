@@ -3,6 +3,7 @@ import { ImageBackground, Text, Image, TouchableOpacity, View, ScrollView, TextI
 import { Stack } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
+import ShoesListing from '@/components/ShoesListing';
 
 const Page = () => {
   return (
@@ -68,13 +69,12 @@ const Page = () => {
             </TouchableOpacity>
           </View>
 
-          {/* <Listing listings={ListingData} category={Categories} /> */}
         </ScrollView>
       </ImageBackground>
 
-      <View>
-        <Text>Le monde vous salut </Text>
-      </View>
+       <ShoesListing />
+    
+     
     </>
   );
 };
