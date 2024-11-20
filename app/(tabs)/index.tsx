@@ -5,6 +5,7 @@ import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import ShoesListing from '@/components/ShoesListing';
 
+
 const Page = () => {
   return (
     <>
@@ -73,6 +74,7 @@ const Page = () => {
       </ImageBackground>
 
        <ShoesListing />
+      
     
      
     </>
@@ -82,10 +84,10 @@ const Page = () => {
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1, // Permet à la ScrollView de s'étendre au maximum sans se restreindre à la taille du contenu
-    paddingBottom: 20, // Pour éviter que le bas de la page soit collé au bord de l'écran
+    paddingBottom: 5, // Pour éviter que le bas de la page soit collé au bord de l'écran
   },
   container: {
-    padding: 20,
+    padding: 10,
     marginTop: 100,
     backgroundColor: '#fff2f2', // Couleur de fond pour le contenu
   },
