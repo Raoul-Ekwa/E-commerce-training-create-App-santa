@@ -1,50 +1,60 @@
-# Welcome to your Expo app 👋
+#  Structure des fichiers
+Tu as déjà une bonne organisation de base, mais voici quelques ajustements pour t'assurer que tout fonctionne bien avec expo-router.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+/app
+  /_layout.tsx                <-- Ce fichier gère la mise en page globale de ton app
+  /(tabs)
+    /_layout.tsx              <-- Ce fichier gère la mise en page des onglets
+    /index.tsx                <-- Page d'accueil avec la FlatList (PhotoAndShoesScreen)
+    /details/[id].tsx         <-- Page de détails avec l'ID dynamique
+/components
+  /PhotoAndShoesScreen.tsx    <-- Composant affichant la FlatList
+  /DetailsScreen.tsx          <-- Composant affichant les détails de l'élément sélectionné
 
-## Get started
 
-1. Install dependencies
+# route dynamique
 
-   ```bash
-   npm install
-   ```
+Dans Expo Router, la création de routes dynamiques se fait d'une manière similaire à celle des autres frameworks de navigation dans React, mais avec une approche plus centrée sur les fichiers. Le concept de routes dynamiques permet de créer des URLs flexibles qui incluent des paramètres comme un id, une clé ou tout autre type de variable.
 
-2. Start the app
+Pourquoi créer une route dynamique comme app/detail/[id].tsx dans Expo Router ?
+Dans Expo Router, les fichiers et répertoires eux-mêmes servent de définitions de routes. L'utilisation de crochets ([]) autour d'un nom de fichier ou de répertoire permet de créer des routes dynamiques, c'est-à-dire des routes qui peuvent accepter des valeurs variables dans l'URL.
 
-   ```bash
-    npx expo start
-   ```
+Explication détaillée :
+Structure des Routes Dynamiques : Lorsque vous créez un fichier avec un nom de répertoire ou de fichier qui contient des crochets ([ ]), cela signifie que ce fichier va agir comme un template pour toutes les routes qui ont une valeur variable dans cette partie de l'URL.
 
-In the output, you'll find options to open the app in a
+Par exemple :
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+app/detail/[id].tsx signifie que l'URL pour cette page peut ressembler à detail/1, detail/2, detail/abc, etc.
+id est un paramètre dynamique, et id peut être n'importe quelle valeur que vous passez dans l'URL.
+Création d'une Route Dynamique : Dans Expo Router, pour créer une route dynamique, vous créez un fichier dont le nom inclut des crochets. Par exemple :
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+app/detail/[id].tsx
+Cela signifie que id sera un paramètre dynamique dans l'URL.
 
-## Get a fresh project
+Exemple d'URL dynamique : myapp/detail/123
 
-When you're ready, run:
+Dans cet exemple, 123 serait la valeur dynamique de l'ID.
 
-```bash
-npm run reset-project
-```
+Utilisation du Paramètre dans la Page : Pour récupérer et utiliser ce paramètre dynamique dans votre page, vous utilisez le hook useRouter fourni par expo-router.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Exemple d'utilisation dans app/detail/[id].tsx :
 
-## Learn more
+tsx
+Copier le code
+import { useRouter } from 'expo-router';  // Importation du hook pour accéder aux paramètres de la route
 
-To learn more about developing your project with Expo, look at the following resources:
+const DetailScreen = () => {
+  const router = useRouter();  // Récupération des informations de navigation
+  const { id } = router.query;  // Extraction du paramètre dynamique 'id' à partir de l'URL
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+  return (
+    <View>
+      <Text>Details pour l'élément avec l'ID : {id}</Text>
+    </View>
+  );
+};
 
-## Join the community
+export default DetailScreen;
+Dans ce code :
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+router.query contient les paramètres de l'URL, et ici id correspond à la valeur dynamique de l'URL. Si l'URL est detail/123, alors id vaudra "123"

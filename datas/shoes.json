@@ -1,110 +1,107 @@
-  
- [
-          {
-            "id": 0,
-            "name": "Ingo Joseph",
-            "image": "https://images.pexels.com/photos/609771/pexels-photo-609771.jpeg",
-            "prix": 25000,
-            "modèle": "Nike Air Max 2024"
-          },
-          {
-            "id": 1,
-            "name": "Mnz",
-            "image": "https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg",
-            "prix": 30000,
-            "modèle": "Adidas UltraBoost"
-          },
-          {
-            "id": 2,
-            "name": "Zain Ali",
-            "image": "https://images.pexels.com/photos/1027130/pexels-photo-1027130.jpeg",
-            "prix": 20000,
-            "modèle": "Puma Future Rider"
-          },
-          {
-            "id": 3,
-            "name": "lil artsy",
-            "image": "https://images.pexels.com/photos/1159670/pexels-photo-1159670.jpeg",
-            "prix": 35000,
-            "modèle": "Dr. Martens 1460"
-          },
-          {
-            "id": 4,
-            "name": "Diana fouda",
-            "image": "https://images.pexels.com/photos/1335463/pexels-photo-1335463.jpeg",
-            "prix": 22000,
-            "modèle": "Vans Old Skool"
-          },
-          {
-            "id": 5,
-            "name": "Ray Piedra",
-            "image": "https://images.pexels.com/photos/1478442/pexels-photo-1478442.jpeg",
-            "prix": 28000,
-            "modèle": "Nike SB Stefan Janoski"
-          },
-          {
-            "id": 6,
-            "name": "Snack Toronto",
-            "image": "https://images.pexels.com/photos/1630344/pexels-photo-1630344.jpeg",
-            "prix": 32000,
-            "modèle": "Balenciaga Triple S"
-          },
-          {
-            "id": 7,
-            "name": "Lukas",
-            "image": "https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg",
-            "prix": 18000,
-            "modèle": "Timberland PRO"
-          },
-          {
-            "id": 8,
-            "name": "Emma Miller",
-            "image": "https://images.pexels.com/photos/2562992/pexels-photo-2562992.png",
-            "prix": 15000,
-            "modèle": "Converse Chuck Taylor"
-          },
-          {
-            "id": 9,
-            "name": "John Doe",
-            "image": "https://images.pexels.com/photos/6594253/pexels-photo-6594253.jpeg",
-            "prix": 40000,
-            "modèle": "Gucci Ace"
-          },
-          {
-            "id": 10,
-            "name": "Sophia Li",
-            "image": "https://images.pexels.com/photos/5730956/pexels-photo-5730956.jpeg",
-            "prix": 27000,
-            "modèle": "Reebok Classic Leather"
-          },
-          {
-            "id": 11,
-            "name": "Mark Davis",
-            "image": "https://images.pexels.com/photos/6153367/pexels-photo-6153367.jpeg",
-            "prix": 32000,
-            "modèle": "New Balance 990v5"
-          },
-          {
-            "id": 12,
-            "name": "Olivia Brown",
-            "image": "https://images.pexels.com/photos/5214139/pexels-photo-5214139.jpeg",
-            "prix": 25000,
-            "modèle": "Asics Gel-Lyte III"
-          },
-          {
-            "id": 13,
-            "name": "James Smith",
-            "image": "https://images.pexels.com/photos/19090/pexels-photo.jpg",
-            "prix": 22000,
-            "modèle": "Fila Disruptor II"
-          },
-          {
-            "id": 14,
-            "name": "Lily Evans",
-            "image": "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg",
-            "prix": 31000,
-            "modèle": "Air Jordan 1"
-          }
-      
-    ] 
-    
+[
+  {
+    "id": 0,
+    "name": "Ingo Joseph",
+    "image": "https://images.pexels.com/photos/609771/pexels-photo-609771.jpeg",
+    "prix": 25000,
+    "modele": "Nike Air Max 2024"
+  },
+  {
+    "id": 1,
+    "name": "Mnz",
+    "image": "https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg",
+    "prix": 30000,
+    "modele": "Adidas UltraBoost"
+  },
+  {
+    "id": 2,
+    "name": "Zain Ali",
+    "image": "https://images.pexels.com/photos/1027130/pexels-photo-1027130.jpeg",
+    "prix": 20000,
+    "modele": "Puma Future Rider"
+  },
+  {
+    "id": 3,
+    "name": "lil artsy",
+    "image": "https://images.pexels.com/photos/1159670/pexels-photo-1159670.jpeg",
+    "prix": 35000,
+    "modele": "Dr. Martens 1460"
+  },
+  {
+    "id": 4,
+    "name": "Diana fouda",
+    "image": "https://images.pexels.com/photos/1335463/pexels-photo-1335463.jpeg",
+    "prix": 22000,
+    "modele": "Vans Old Skool"
+  },
+  {
+    "id": 5,
+    "name": "Ray Piedra",
+    "image": "https://images.pexels.com/photos/1478442/pexels-photo-1478442.jpeg",
+    "prix": 28000,
+    "modele": "Nike SB Stefan Janoski"
+  },
+  {
+    "id": 6,
+    "name": "Snack Toronto",
+    "image": "https://images.pexels.com/photos/1630344/pexels-photo-1630344.jpeg",
+    "prix": 32000,
+    "modele": "Balenciaga Triple S"
+  },
+  {
+    "id": 7,
+    "name": "Lukas",
+    "image": "https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg",
+    "prix": 18000,
+    "modele": "Timberland PRO"
+  },
+  {
+    "id": 8,
+    "name": "Emma Miller",
+    "image": "https://images.pexels.com/photos/2562992/pexels-photo-2562992.png",
+    "prix": 15000,
+    "modele": "Converse Chuck Taylor"
+  },
+  {
+    "id": 9,
+    "name": "John Doe",
+    "image": "https://images.pexels.com/photos/6594253/pexels-photo-6594253.jpeg",
+    "prix": 40000,
+    "modele": "Gucci Ace"
+  },
+  {
+    "id": 10,
+    "name": "Sophia Li",
+    "image": "https://images.pexels.com/photos/5730956/pexels-photo-5730956.jpeg",
+    "prix": 27000,
+    "modele": "Reebok Classic Leather"
+  },
+  {
+    "id": 11,
+    "name": "Mark Davis",
+    "image": "https://images.pexels.com/photos/6153367/pexels-photo-6153367.jpeg",
+    "prix": 32000,
+    "modele": "New Balance 990v5"
+  },
+  {
+    "id": 12,
+    "name": "Olivia Brown",
+    "image": "https://images.pexels.com/photos/5214139/pexels-photo-5214139.jpeg",
+    "prix": 25000,
+    "modele": "Asics Gel-Lyte III"
+  },
+  {
+    "id": 13,
+    "name": "James Smith",
+    "image": "https://images.pexels.com/photos/19090/pexels-photo.jpg",
+    "prix": 22000,
+    "modele": "Fila Disruptor II"
+  },
+  {
+    "id": 14,
+    "name": "Lily Evans",
+    "image": "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg",
+    "prix": 31000,
+    "modele": "Air Jordan 1"
+  }
+]

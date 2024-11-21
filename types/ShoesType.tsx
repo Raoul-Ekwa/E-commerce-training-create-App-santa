@@ -3,5 +3,5 @@ export interface ShoesType {
     name: string;
     image: string;
     prix: number;
-    modèle: string;
+    modele: string;
   }

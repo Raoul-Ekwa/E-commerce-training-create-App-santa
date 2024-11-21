@@ -1,75 +1,72 @@
 [
-    
-      {
-        "id": 0,
-        "name": "FRANKYDEE",
-        "image": "https://images.pexels.com/photos/776908/pexels-photo-776908.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "modele": "Canon EOS 5D Mark IV",
-        "prix": 135000
-      },
-      {
-        "id": 1,
-        "name": "Bruno Massao",
-        "image": "https://images.pexels.com/photos/2378079/pexels-photo-2378079.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "modele": "Nikon D850",
-        "prix": 145500
-      },
-      {
-        "id": 2,
-        "name": "Gül Işık",
-        "image": "https://images.pexels.com/photos/2295393/pexels-photo-2295393.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "modele": "Sony Alpha A7 III",
-        "prix": 120000
-      },
-      {
-        "id": 3,
-        "name": "Tima Miroshnichenko",
-        "image": "https://images.pexels.com/photos/7205899/pexels-photo-7205899.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "modele": "Fujifilm X-T4",
-        "prix": 125000
-      },
-      {
-        "id": 4,
-        "name": "Jill Burrow",
-        "image": "https://images.pexels.com/photos/6858618/pexels-photo-6858618.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "modele": "Olympus OM-D E-M1 Mark III",
-        "prix": 110000
-      },
-      {
-        "id": 5,
-        "name": "Askar Abayev",
-        "image": "https://images.pexels.com/photos/5638701/pexels-photo-5638701.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "modele": "Panasonic Lumix GH5",
-        "prix": 119000
-      },
-      {
-        "id": 6,
-        "name": "Tima Miroshnichenko",
-        "image": "https://images.pexels.com/photos/7205937/pexels-photo-7205937.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "modele": "Leica M10",
-        "prix": 180000
-      },
-      {
-        "id": 7,
-        "name": "Vlad Chețan",
-        "image": "https://images.pexels.com/photos/7990475/pexels-photo-7990475.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "modele": "Canon EOS R5",
-        "prix": 195000
-      },
-      {
-        "id": 8,
-        "name": "Nina Uhlíková",
-        "image": "https://images.pexels.com/photos/6617577/pexels-photo-6617577.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "modele": "Nikon Z7 II",
-        "prix": 170000
-      },
-      {
-        "id": 9,
-        "name": "Humbert Jürgens",
-        "image": "https://images.pexels.com/photos/3940567/pexels-photo-3940567.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-        "modele": "Sony Cyber-shot RX100 VII",
-        "prix": 105000
-      }
-    ]
-  
-  
+  {
+    "id": 15,
+    "name": "FRANKYDEE",
+    "image": "https://images.pexels.com/photos/776908/pexels-photo-776908.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "modele": "Canon EOS 5D Mark IV",
+    "prix": 135000
+  },
+  {
+    "id": 16,
+    "name": "Bruno Massao",
+    "image": "https://images.pexels.com/photos/2378079/pexels-photo-2378079.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "modele": "Nikon D850",
+    "prix": 145500
+  },
+  {
+    "id": 17,
+    "name": "Gül Işık",
+    "image": "https://images.pexels.com/photos/2295393/pexels-photo-2295393.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "modele": "Sony Alpha A7 III",
+    "prix": 120000
+  },
+  {
+    "id": 18,
+    "name": "Tima Miroshnichenko",
+    "image": "https://images.pexels.com/photos/7205899/pexels-photo-7205899.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "modele": "Fujifilm X-T4",
+    "prix": 125000
+  },
+  {
+    "id": 19,
+    "name": "Jill Burrow",
+    "image": "https://images.pexels.com/photos/6858618/pexels-photo-6858618.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "modele": "Olympus OM-D E-M1 Mark III",
+    "prix": 110000
+  },
+  {
+    "id": 20,
+    "name": "Askar Abayev",
+    "image": "https://images.pexels.com/photos/5638701/pexels-photo-5638701.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "modele": "Panasonic Lumix GH5",
+    "prix": 119000
+  },
+  {
+    "id": 21,
+    "name": "Tima Miroshnichenko",
+    "image": "https://images.pexels.com/photos/7205937/pexels-photo-7205937.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "modele": "Leica M10",
+    "prix": 180000
+  },
+  {
+    "id": 22,
+    "name": "Vlad Chețan",
+    "image": "https://images.pexels.com/photos/7990475/pexels-photo-7990475.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "modele": "Canon EOS R5",
+    "prix": 195000
+  },
+  {
+    "id": 23,
+    "name": "Nina Uhlíková",
+    "image": "https://images.pexels.com/photos/6617577/pexels-photo-6617577.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "modele": "Nikon Z7 II",
+    "prix": 170000
+  },
+  {
+    "id": 24,
+    "name": "Humbert Jürgens",
+    "image": "https://images.pexels.com/photos/2073622/pexels-photo-2073622.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "modele": "Sony Cyber-shot RX100 VII",
+    "prix": 105000
+  }
+]
