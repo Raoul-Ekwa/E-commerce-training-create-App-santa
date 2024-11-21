@@ -1,27 +1,35 @@
-import { StyleSheet, Text, View, Image, FlatList, ImageBackground, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { ShoesType } from '@/types/shoesType'
-import shoesData from '@/datas/shoes.json' 
-import Colors from '@/constants/Colors'
+import { StyleSheet, Text, View, Image, FlatList, ImageBackground, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ShoesType } from '@/types/ShoesType';
+import shoesData from '@/datas/shoes.json'; 
+import Colors from '@/constants/Colors';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 const ShoesListing = () => {
-  const [data, setData] = useState<ShoesType[]>([])
+  const [data, setData] = useState<ShoesType[]>([]);
+  const [selectedItem, setSelectedItem] = useState<ShoesType | null>(null); // État pour l'élément sélectionné
 
   // Chargeons les données JSON dans l'état
   useEffect(() => {
-    setData(shoesData)
-  }, [])
+    setData(shoesData);
+  }, []);
 
   // Fonction de gestion du clic
   const handlePress = (item: ShoesType) => {
-    console.log('Element cliqué:', item);
-    // Vous pouvez ajouter une navigation ou toute autre logique ici
+    setSelectedItem(item); // Mettez à jour l'état avec l'élément sélectionné
+    console.log('Élément cliqué:', item);
+    // On peut ajouter une navigation ou toute autre logique ici
   };
 
   // Fonction pour afficher chaque item
   const renderItem = ({ item }: { item: ShoesType }) => (
-    <TouchableOpacity onPress={() => handlePress(item)} style={styles.card}>
+    <TouchableOpacity 
+      onPress={() => handlePress(item)} 
+      style={[
+        styles.card, 
+        item === selectedItem && styles.selectedCard // Applique le style sélectionné si l'élément est le sélectionné
+      ]}
+    >
       <Image source={{ uri: item.image }} style={styles.image} />
       <View style={styles.nameItem}>
         <Text>{item.name}</Text>
@@ -84,20 +92,31 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3,
     elevation: 3,
+    justifyContent: 'center',  // Centrer verticalement les éléments
+    alignItems: 'center',      // Centrer horizontalement les éléments
+    flexDirection: 'column',   // Disposer les éléments en colonne
+  },
+  selectedCard: {
+    backgroundColor: Colors.rose, // Changer la couleur de fond quand l'élément est sélectionné
+    //borderColor: 'blue', // Par exemple, ajouter une bordure bleue quand sélectionné
+    //borderWidth: 2,
   },
   image: {
     width: 80,
     height: 80,
     borderRadius: 10,
+    marginBottom: 10,  // Ajouter un espacement sous l'image
   },
   nameItem: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginTop: 10,
+    textAlign: 'center',  // Centrer le texte horizontalement
   },
   PriceModeleItem: {
     marginTop: 5,
     gap: 5,
+    textAlign: 'center',  // Centrer le texte horizontalement
+    alignItems: 'center', // Centrer horizontalement les éléments
   },
   imageBackground: {
     width: '100%',

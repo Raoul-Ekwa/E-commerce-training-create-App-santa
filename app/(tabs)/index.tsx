@@ -3,7 +3,9 @@ import { ImageBackground, Text, Image, TouchableOpacity, View, ScrollView, TextI
 import { Stack } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
-import ShoesListing from '@/components/ShoesListing';
+import PhotoAndShoesScreen from '@/components/PhotoAndShoesScrenn';
+import HomeImageBackground from '@/components/HomeImageBackground';
+
 
 
 const Page = () => {
@@ -11,7 +13,6 @@ const Page = () => {
     <>
       <ImageBackground
         source={require('../../assets/images/Rectangle 1.png')} // Remplace par ton image
-        style={styles.backgroundImage}
         resizeMode="cover" // Assure que l'image couvre toute la zone
       >
         {/* Le composant Stack.Screen configure l'entête de l'écran. Il fait partie d'une navigation, probablement de React Navigation. */}
@@ -22,7 +23,7 @@ const Page = () => {
             headerLeft: () => (
               <TouchableOpacity onPress={() => {}} style={{ marginLeft: 20 }}>
                 <Image
-                  source={{ uri: 'https://xsgames.co/randomusers/avatar.php?g=female' }} // Avatar utilisateur (image aléatoire)
+                  source={require("../../assets/images/Pour la Loterie Americaine.jpeg")} // Avatar utilisateur (image aléatoire)
                   style={{ width: 40, height: 40, borderRadius: 10 }} // Style de l'image de l'avatar (cercle)
                 />
               </TouchableOpacity>
@@ -54,11 +55,14 @@ const Page = () => {
         />
         
         {/* ScrollView avec contenu */}
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
-          <View style={styles.container}>
-            <Text style={styles.headingText}>Explorez nos différents produits !</Text>
+        <View>
+          
+        </View>
+          <View style={styles.headerText}>
+            {/* <Text style={styles.headingText}>Explorez nos différents produits !</Text> */}
           </View>
-
+       </ImageBackground>
+       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
           <View style={styles.searchSectionWrapper}>
             <View style={styles.searchBar}>
               <Ionicons name="search" size={18} style={{ marginRight: 10, color: Colors.black }} />
@@ -68,12 +72,12 @@ const Page = () => {
             <TouchableOpacity onPress={() => {}}>
               <Ionicons name="options" size={20} style={styles.filterButton} />
             </TouchableOpacity>
-          </View>
+          </View> 
+        <HomeImageBackground />
+       <PhotoAndShoesScreen /> 
 
-        </ScrollView>
-      </ImageBackground>
-
-       <ShoesListing />
+      
+     </ScrollView>
       
     
      
@@ -86,7 +90,7 @@ const styles = StyleSheet.create({
     flexGrow: 1, // Permet à la ScrollView de s'étendre au maximum sans se restreindre à la taille du contenu
     paddingBottom: 5, // Pour éviter que le bas de la page soit collé au bord de l'écran
   },
-  container: {
+  headerText: {
     padding: 10,
     marginTop: 100,
     backgroundColor: '#fff2f2', // Couleur de fond pour le contenu
@@ -115,6 +119,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     color: Colors.white,
   },
+  
 });
 
 export default Page;
