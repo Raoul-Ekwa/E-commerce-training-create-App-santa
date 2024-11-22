@@ -9,7 +9,7 @@ import HomeImageBackground from '@/components/HomeImageBackground';
 
 
 const Page = () => {
-  return (
+  return ( 
     <>
       <ImageBackground
         source={require('../../assets/images/Rectangle 1.png')} // Remplace par ton image

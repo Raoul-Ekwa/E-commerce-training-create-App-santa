@@ -13,7 +13,7 @@ import { AntDesign } from '@expo/vector-icons';
 const PhotoAndShoesScreen = () => {
   const [photoDataState, setPhotoDataState] = useState<PhotoType[]>([]);
   const [shoesDataState, setShoesDataState] = useState<ShoesType[]>([]);
-  const [selectedItem, setSelectedItem] = useState<PhotoType | ShoesType | null>(null);
+  const [selectedItem, setSelectedItem] = useState<PhotoType | ShoesType | null>(null); 
   const router = useRouter();
 
   useEffect(() => {
