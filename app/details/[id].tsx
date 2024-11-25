@@ -75,7 +75,7 @@ const DetailsScreen = () => {
         <Text style={styles.name}>{item.name}</Text>
         <View style={styles.subInfoContainer}>
           <Text style={styles.modele}>{item.modele || 'Modèle indisponible'}</Text>
-          <Text style={styles.price}>{item.prix} FCFA</Text>
+          {/* <Text style={styles.price}>{item.prix} FCFA</Text> */}
         </View>
         <View style={styles.description}>
           <Text style={styles.descriptionTitle}>Description de l'article</Text>
@@ -89,8 +89,8 @@ const DetailsScreen = () => {
             <Text style={{color: Colors.white, fontSize: 15, fontWeight: 'bold'}}> Acheter</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.favorisButton} onPress={() => {}}>
-            <Text style={{color: Colors.white, fontSize: 15, fontWeight: 'bold'}}> Favoris</Text>
+          <TouchableOpacity style={styles.priceButton} onPress={() => {}}>
+            <Text style={{color: Colors.white, fontSize: 15, fontWeight: 'bold'}}>{item.prix} FCFA</Text>
           </TouchableOpacity>
 
         </View>
@@ -196,10 +196,10 @@ const styles = StyleSheet.create({
    backgroundColor: Colors.rose,
    padding: 20,
    borderRadius: 10,
-   
+   paddingHorizontal : 50
   },
-  favorisButton: {
-    backgroundColor: Colors.rose,
+  priceButton: {
+    backgroundColor: Colors.black,
     padding: 20,
     borderRadius: 10,
   }

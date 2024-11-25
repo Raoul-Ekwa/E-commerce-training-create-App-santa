@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, Text, Image, TouchableOpacity, View, ScrollView, TextInput, StyleSheet } from 'react-native';
+import { ImageBackground, Text, Image, TouchableOpacity, View, ScrollView, TextInput, StyleSheet, SafeAreaView } from 'react-native';
 import { Stack } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
@@ -10,7 +10,7 @@ import HomeImageBackground from '@/components/HomeImageBackground';
 
 const Page = () => {
   return ( 
-    <>
+    <SafeAreaView>
       <ImageBackground
         source={require('../../assets/images/Rectangle 1.png')} // Remplace par ton image
         resizeMode="cover" // Assure que l'image couvre toute la zone
@@ -81,7 +81,7 @@ const Page = () => {
       
     
      
-    </>
+    </SafeAreaView>
   );
 };
 
@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     gap: 20,
     marginHorizontal: 10,
+    alignItems: 'center'
   },
   searchBar: {
     flex: 1,
@@ -112,6 +113,7 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: Colors.white,
     borderRadius: 20,
+    alignItems:'center'
   },
   filterButton: {
     backgroundColor: Colors.rose,

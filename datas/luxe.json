@@ -1,0 +1,72 @@
+[
+    {
+        "id": 0,
+        "name": "Kateryna Tsurik",
+        "image": "https://images.pexels.com/photos/28259501/pexels-photo-28259501.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "price": 124350,
+        "modele": "LuxeX 2024"
+    },
+    {
+        "id": 1,
+        "name": "Karley Saagi",
+        "image": "https://images.pexels.com/photos/3131981/pexels-photo-3131981.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "price": 287500,
+        "modele": "Elite 5000"
+    },
+    {
+        "id": 2,
+        "name": "Melvin Wahlin",
+        "image": "https://images.pexels.com/photos/2405648/pexels-photo-2405648.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "price": 185000,
+        "modele": "Luxora S"
+    },
+    {
+        "id": 3,
+        "name": "Valeria Boltneva",
+        "image": "https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "price": 379900,
+        "modele": "Prestige Z4"
+    },
+    {
+        "id": 4,
+        "name": "Max Vakhtbovycn",
+        "image": "https://images.pexels.com/photos/11701120/pexels-photo-11701120.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "price": 220500,
+        "modele": "Grand Luxe 100"
+    },
+    {
+        "id": 5,
+        "name": "Isaac Bañuelos",
+        "image": "https://images.pexels.com/photos/3467946/pexels-photo-3467946.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "price": 129900,
+        "modele": "Sapphire GT"
+    },
+    {
+        "id": 6,
+        "name": "Ekaterina Astakhova",
+        "image": "https://images.pexels.com/photos/3450331/pexels-photo-3450331.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "price": 249000,
+        "modele": "Vanguard X"
+    },
+    {
+        "id": 7,
+        "name": "peter huang",
+        "image": "https://images.pexels.com/photos/4291121/pexels-photo-4291121.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "price": 145200,
+        "modele": "Imperial V8"
+    },
+    {
+        "id": 8,
+        "name": "cottonbro studio",
+        "image": "https://images.pexels.com/photos/6728528/pexels-photo-6728528.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "price": 300500,
+        "modele": "Monarch E"
+    },
+    {
+        "id": 9,
+        "name": "Daria Liudnaya",
+        "image": "https://images.pexels.com/photos/8166624/pexels-photo-8166624.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "price": 195000,
+        "modele": "Zenith Pro"
+    }
+]

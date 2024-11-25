@@ -69,3 +69,12 @@ export default DetailScreen;
 Dans ce code :
 
 router.query contient les paramètres de l'URL, et ici id correspond à la valeur dynamique de l'URL. Si l'URL est detail/123, alors id vaudra "123"
+
+# Structure des données :
+ Vous avez souhaité une liste de 10 objets JSON représentant des personnes, avec les informations suivantes pour chaque élément :
+
+id : Un identifiant unique, compris entre 0 et 9 (inclus).
+name : name ramplace photographer.
+image : remplace la sous clé "large" de "src"
+price : Une valeur numérique représentant un prix, avec des valeurs aléatoires, avec une valeur minimale de 100 000.
+modele : Un modèle fictif de produit ou de voiture de luxe, avec des noms aléatoires associés à chaque entrée.
