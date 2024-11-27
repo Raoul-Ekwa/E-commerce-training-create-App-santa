@@ -48,7 +48,7 @@ const Page = () => {
             headerTitle: () => (
               <Image
                 source={require('../../assets/images/logo_santaLucia.png')} // Assurez-vous que le chemin d'image est correct
-                style={{ width: 100, height: 60, marginTop: 15 }} // Ajuste la taille du logo
+                style={{ width: 200, height:130 , marginTop: 65 }} // Ajuste la taille du logo
               />
             ),
           }}
@@ -88,7 +88,7 @@ const Page = () => {
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1, // Permet à la ScrollView de s'étendre au maximum sans se restreindre à la taille du contenu
-    paddingBottom: 5, // Pour éviter que le bas de la page soit collé au bord de l'écran
+    paddingBottom: 10, // Pour éviter que le bas de la page soit collé au bord de l'écran
   },
   headerText: {
     padding: 10,

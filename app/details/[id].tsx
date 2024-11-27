@@ -6,11 +6,13 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
+  Animated,
+  Button
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { router, Stack } from 'expo-router';
-import { AntDesign, Feather } from '@expo/vector-icons';
+import { AntDesign, Entypo, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import photoData from '@/datas/photos.json';
 import shoesData from '@/datas/shoes.json';
@@ -26,6 +28,9 @@ type RouteParams = {
 const DetailsScreen = () => {
   const route = useRoute();
   const { id } = route.params as RouteParams;
+  
+  // ce hook va gerer l'etat actif ou inatif de notre Text sur notre clic animation slide
+  const [activeTab, setActiveTab] = useState(null);
 
   // Convertir l'ID en nombre entier
   const itemId = parseInt(id, 10);
@@ -42,6 +47,18 @@ const DetailsScreen = () => {
     );
   }
 
+  // Référence à la valeur animée pour le tiret
+  const slideAnim = useRef(new Animated.Value(0)).current;
+
+  // Fonction pour animer le tiret
+  const slideTo = (index) => {
+    Animated.timing(slideAnim, {
+      toValue: index * (width / 2), // Ajustez la valeur selon la largeur de vos boutons
+      duration: 300,
+      useNativeDriver: false,
+    }).start();
+  };
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <Stack.Screen
@@ -49,8 +66,8 @@ const DetailsScreen = () => {
           headerTitle: '',
           headerTransparent: true,
           headerLeft: () => (
-            <TouchableOpacity onPress={() => router.back()} style={styles.iconButton}>
-              <View style={styles.iconHeaderLeft}>
+            <TouchableOpacity onPress={() => router.back()} >
+              <View style={styles.iconHeaderLeft} style={styles.iconLeftContainer}>
                 <Feather name="arrow-left" size={30} />
                 <Text style={styles.headerText}>Détails du produit</Text>
               </View>
@@ -59,23 +76,50 @@ const DetailsScreen = () => {
           headerRight: () => (
             <>
               <TouchableOpacity onPress={() => {}} style={styles.iconButton}>
-                <AntDesign name="sharealt" size={24} color={Colors.black} />
+                <Entypo name="share" size={24} color={Colors.black} />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => {}} style={styles.iconButton}>
-                <AntDesign name="message1" size={24} color={Colors.black} />
+                 <MaterialCommunityIcons name="message" size={24} color={Colors.black} />
               </TouchableOpacity>
             </>
           ),
         }}
       />
+
+      {/* Conteneur avec boutons pour changer de section */}
+      <View style={{ marginLeft: 30 }}>
+        <View style={styles. SliderClicAnimContainer}>
+          <Text 
+            style={[styles.SliderClicText, activeTab === 'Aperçu' && styles.activeText]}
+            onPress={() => setActiveTab('Aperçu')}
+          >
+            Aperçu
+          </Text>
+          <Text
+            style={[styles.text, activeTab === 'Description' && styles.activeText]}
+            onPress={() => {
+              setActiveTab('Description');
+              router.push('screens/descriptionDetaillee/'); // Naviguer vers la page Description
+            }}
+        >
+           Description détaillée
+        </Text>
+        </View>
+      </View>
+
+      {/* Tiret animé */}
+      <Animated.View style={[styles.indicator, { transform: [{ translateX: slideAnim }] }]} />
+
+      {/* Contenu des détails */}
       <View style={styles.imageContainer}>
         <Image source={{ uri: item.image }} style={styles.image} />
       </View>
+
+      {/* Section description */}
       <View style={styles.detailsContainer}>
         <Text style={styles.name}>{item.name}</Text>
         <View style={styles.subInfoContainer}>
           <Text style={styles.modele}>{item.modele || 'Modèle indisponible'}</Text>
-          {/* <Text style={styles.price}>{item.prix} FCFA</Text> */}
         </View>
         <View style={styles.description}>
           <Text style={styles.descriptionTitle}>Description de l'article</Text>
@@ -84,15 +128,15 @@ const DetailsScreen = () => {
           </Text>
         </View>
 
+        {/* Boutons d'achat */}
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.buyButton}onPress={() => {}}>
+          <TouchableOpacity style={styles.buyButton} onPress={() => {}}>
             <Text style={{color: Colors.white, fontSize: 15, fontWeight: 'bold'}}> Acheter</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.priceButton} onPress={() => {}}>
             <Text style={{color: Colors.white, fontSize: 15, fontWeight: 'bold'}}>{item.prix} FCFA</Text>
           </TouchableOpacity>
-
         </View>
       </View>
     </SafeAreaView>
@@ -101,15 +145,36 @@ const DetailsScreen = () => {
 
 const styles = StyleSheet.create({
   safeArea: {
-    flex: 1,
     backgroundColor: Colors.bgColor,
-  },
-  container: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  iconLeftContainer: {
+   flexDirection: 'row',
+   alignItems: 'center',
+   gap: 30,
+  },
+  SliderClicAnimContainer: {
+    flexDirection: 'row',
+    gap: 20,
     alignItems: 'center',
-    backgroundColor: '#f8cbdb',
-    padding: 20,
+  },
+  SliderClicText: {
+    fontSize: 15,
+    padding: 10,
+    color: 'gray'
+  },
+  activeText: {
+    color: Colors.black,
+    fontWeight: 'bold',
+    borderBottomWidth: 2,
+    borderBottomColor: '#007BFF',
+    fontSize: 18,
+  },
+  apercuDetailsContainer: {
+    marginTop: 20,
+    flexDirection: 'row',
+    marginLeft: 25,
+    gap: 40
   },
   errorText: {
     fontSize: 18,
@@ -117,25 +182,33 @@ const styles = StyleSheet.create({
   },
   iconButton: {
     borderRadius: 10,
-    padding: 4,
+    marginRight: 20,
   },
   iconHeaderLeft: {
+    marginRight: 20,
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
-    gap: 40,
+    gap: 20,
     padding: 10,
+    marginLeft: 5,
+    backgroundColor: 'orange'
   },
   headerText: {
     color: Colors.black,
     fontSize: 18,
     fontWeight: 'bold',
   },
-  iconHeaderRight: {
-    flexDirection: 'row',
-    gap: 20,
-    padding: 10,
+  
+  // Style pour le tiret
+  indicator: {
+    position: 'absolute',
+    bottom: -5, // Positionnez-le juste en dessous des boutons
+    height: 4, // Hauteur du tiret
+    width: width / 2 - 40, // Largeur du tiret (ajuster selon vos besoins)
+    backgroundColor: Colors.rose, // Couleur du tiret
+    left: 25, // Positionnez-le sous le premier bouton (Aperçu)
   },
+
   imageContainer: {
     marginTop: 30,
     marginHorizontal: 15,
@@ -155,53 +228,48 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 10,
   },
-  subInfoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  subInfoContainer:{
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'space-between'
   },
-  modele: {
-    fontSize: 20,
-    color: '#777',
+  modele:{
+    fontSize :20,
+    color : '#777'
   },
-  price: {
-    fontSize: 22,
-    color: 'blue',
-    fontWeight: '500',
+  description:{
+    marginTop :20,
+    backgroundColor : Colors.white,
+    marginHorizontal :10,
+    padding :20,
+    borderRadius :15
   },
-  description: {
-    marginTop: 20,
-    backgroundColor: Colors.white,
-    marginHorizontal: 10,
-    padding: 20,
-    borderRadius: 15,
+  descriptionTitle:{
+    fontSize :18,
+    fontWeight : 'bold',
+    marginBottom :5
   },
-  descriptionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  descriptionText: {
-    fontSize: 15,
-    letterSpacing: 0.7,
-    lineHeight: 30,
+  descriptionText:{
+    fontSize :15,
+    letterSpacing :0.7,
+    lineHeight :30
   },
   buttonContainer:{
-     flexDirection: 'row',
-     marginTop: 70,
-     justifyContent: 'space-between',
-     marginHorizontal: 25,
+    flexDirection : 'row',
+    marginTop :70,
+    justifyContent : 'space-between',
+    marginHorizontal :25
   },
-  buyButton: {
-   backgroundColor: Colors.rose,
-   padding: 20,
-   borderRadius: 10,
-   paddingHorizontal : 50
+  buyButton:{
+    backgroundColor : Colors.rose,
+    padding :20,
+    borderRadius :10,
+    paddingHorizontal :50
   },
-  priceButton: {
-    backgroundColor: Colors.black,
-    padding: 20,
-    borderRadius: 10,
+  priceButton:{
+    backgroundColor : Colors.black,
+    padding :20,
+    borderRadius :10
   }
 });
 

@@ -1,14 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Colors from '@/constants/Colors'
 
-const Promotions = () => {
+const aperçu = () => {
   return (
-    <View>
-      <Text>Promotions</Text>
+    <View >
+      <Text>Aperçu</Text>
     </View>
   )
 }
 
-export default Promotions
+export default aperçu
 
 const styles = StyleSheet.create({})
