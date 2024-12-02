@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -8,11 +8,10 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Animated,
-  Button
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { router, Stack } from 'expo-router';
-import { AntDesign, Entypo, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Feather, Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import photoData from '@/datas/photos.json';
 import shoesData from '@/datas/shoes.json';
@@ -28,9 +27,9 @@ type RouteParams = {
 const DetailsScreen = () => {
   const route = useRoute();
   const { id } = route.params as RouteParams;
-  
+
   // ce hook va gerer l'etat actif ou inatif de notre Text sur notre clic animation slide
-  const [activeTab, setActiveTab] = useState(null);
+  const [activeTab, setActiveTab] = useState('Aperçu'); // Onglet actif par défaut
 
   // Convertir l'ID en nombre entier
   const itemId = parseInt(id, 10);
@@ -59,6 +58,23 @@ const DetailsScreen = () => {
     }).start();
   };
 
+  // Affichage du contenu en fonction de l'onglet sélectionné
+  const renderContent = () => {
+    if (activeTab === 'Aperçu') {
+      return;
+    }
+    if (activeTab === 'Description détaillée') {
+      return (
+        <View>
+          <Text style={styles.descriptionTitle}>Description de l'article</Text>
+          <Text style={styles.descriptionText}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, perferendis possimus voluptates quas porro doloremque ut nostrum! Optio minima suscipit expedita illum saepe asperiores, maiores in accusamus velit, esse praesentium.
+          </Text>
+        </View>
+      );
+    }
+  };
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <Stack.Screen
@@ -67,7 +83,7 @@ const DetailsScreen = () => {
           headerTransparent: true,
           headerLeft: () => (
             <TouchableOpacity onPress={() => router.back()} >
-              <View style={styles.iconHeaderLeft} style={styles.iconLeftContainer}>
+              <View style={styles.iconHeaderLeft}>
                 <Feather name="arrow-left" size={30} />
                 <Text style={styles.headerText}>Détails du produit</Text>
               </View>
@@ -86,129 +102,133 @@ const DetailsScreen = () => {
         }}
       />
 
-      {/* Conteneur avec boutons pour changer de section */}
-      <View style={{ marginLeft: 30 }}>
-        <View style={styles. SliderClicAnimContainer}>
-          <Text 
-            style={[styles.SliderClicText, activeTab === 'Aperçu' && styles.activeText]}
-            onPress={() => setActiveTab('Aperçu')}
-          >
-            Aperçu
-          </Text>
-          <Text
-            style={[styles.text, activeTab === 'Description' && styles.activeText]}
-            onPress={() => {
-              setActiveTab('Description');
-              router.push('screens/descriptionDetaillee/'); // Naviguer vers la page Description
-            }}
+      {/* Onglets de sélection */}
+      <View style={styles.tabsContainer}>
+        <TextWithUnderline
+          isActive={activeTab === 'Aperçu'}
+          onPress={() => {
+            setActiveTab('Aperçu');
+            slideTo(0);
+          }}
         >
-           Description détaillée
-        </Text>
-        </View>
+          Aperçu
+        </TextWithUnderline>
+        <TextWithUnderline
+          isActive={activeTab === 'Description détaillée'}
+          onPress={() => {
+            setActiveTab('Description détaillée');
+            slideTo(1);
+          }}
+        >
+          Description détaillée
+        </TextWithUnderline>
       </View>
 
       {/* Tiret animé */}
       <Animated.View style={[styles.indicator, { transform: [{ translateX: slideAnim }] }]} />
 
-      {/* Contenu des détails */}
-      <View style={styles.imageContainer}>
-        <Image source={{ uri: item.image }} style={styles.image} />
+      {/* Contenu dynamique en fonction de l'onglet sélectionné */}
+      <View style={styles.contentContainer}>
+        {renderContent()}
       </View>
 
-      {/* Section description */}
-      <View style={styles.detailsContainer}>
-        <Text style={styles.name}>{item.name}</Text>
-        <View style={styles.subInfoContainer}>
-          <Text style={styles.modele}>{item.modele || 'Modèle indisponible'}</Text>
-        </View>
-        <View style={styles.description}>
-          <Text style={styles.descriptionTitle}>Description de l'article</Text>
-          <Text style={styles.descriptionText}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, perferendis possimus voluptates quas porro doloremque ut nostrum! Optio minima suscipit expedita illum saepe asperiores, maiores in accusamus velit, esse praesentium.
-          </Text>
-        </View>
+      {/* Affichage des images et des boutons uniquement si l'onglet actif est "Aperçu" */}
+      {activeTab === 'Aperçu' && (
+        <>
+          <View style={styles.imageContainer}>
+            <Image source={{ uri: item.image }} style={styles.image} />
+          </View>
 
-        {/* Boutons d'achat */}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.buyButton} onPress={() => {}}>
-            <Text style={{color: Colors.white, fontSize: 15, fontWeight: 'bold'}}> Acheter</Text>
-          </TouchableOpacity>
+          <View style={styles.detailsContainer}>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.modele}>{item.modele || 'Modèle indisponible'}</Text>
 
-          <TouchableOpacity style={styles.priceButton} onPress={() => {}}>
-            <Text style={{color: Colors.white, fontSize: 15, fontWeight: 'bold'}}>{item.prix} FCFA</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+            {/* Boutons d'achat */}
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.buyButton} onPress={() => {}}>
+                <Text style={{ color: Colors.white, fontSize: 15, fontWeight: 'bold' }}>Acheter</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.priceButton} onPress={() => {}}>
+                <Text style={{ color: Colors.white, fontSize: 15, fontWeight: 'bold' }}>
+                  {item.prix} FCFA
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </>
+      )}
     </SafeAreaView>
   );
 };
+
+// Composant pour afficher le texte avec soulignement
+const TextWithUnderline = ({ children, isActive, onPress }) => (
+  <TouchableOpacity onPress={onPress}>
+    <View style={styles.textContainer}>
+      <Text style={[styles.text, isActive && styles.activeText]}>{children}</Text>
+      {isActive && <View style={styles.underline} />}
+    </View>
+  </TouchableOpacity>
+);
 
 const styles = StyleSheet.create({
   safeArea: {
     backgroundColor: Colors.bgColor,
     flex: 1,
   },
-  iconLeftContainer: {
-   flexDirection: 'row',
-   alignItems: 'center',
-   gap: 30,
-  },
-  SliderClicAnimContainer: {
-    flexDirection: 'row',
-    gap: 20,
-    alignItems: 'center',
-  },
-  SliderClicText: {
-    fontSize: 15,
-    padding: 10,
-    color: 'gray'
-  },
-  activeText: {
-    color: Colors.black,
-    fontWeight: 'bold',
-    borderBottomWidth: 2,
-    borderBottomColor: '#007BFF',
-    fontSize: 18,
-  },
-  apercuDetailsContainer: {
-    marginTop: 20,
-    flexDirection: 'row',
-    marginLeft: 25,
-    gap: 40
-  },
-  errorText: {
-    fontSize: 18,
-    color: 'red',
-  },
-  iconButton: {
-    borderRadius: 10,
-    marginRight: 20,
-  },
   iconHeaderLeft: {
-    marginRight: 20,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 20,
     padding: 10,
     marginLeft: 5,
-    backgroundColor: 'orange'
+  },
+  iconButton: {
+    marginLeft:20
   },
   headerText: {
     color: Colors.black,
     fontSize: 18,
     fontWeight: 'bold',
   },
-  
-  // Style pour le tiret
+  tabsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 20,
+    marginTop: 10,
+  },
+  textContainer: {
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 16,
+    color: 'gray',
+    marginBottom: 5,
+  },
+  activeText: {
+    fontWeight: 'bold',
+    color: Colors.black,
+  },
+  underline: {
+    height: 2,
+    width: '100%',
+    backgroundColor: '#A1DBF5',
+  },
   indicator: {
     position: 'absolute',
-    bottom: -5, // Positionnez-le juste en dessous des boutons
-    height: 4, // Hauteur du tiret
-    width: width / 2 - 40, // Largeur du tiret (ajuster selon vos besoins)
-    backgroundColor: Colors.rose, // Couleur du tiret
-    left: 25, // Positionnez-le sous le premier bouton (Aperçu)
+    bottom: -5,
+    height: 4,
+    width: width / 2 - 40,
+    backgroundColor: Colors.rose,
+    left: 25,
   },
-
+  contentContainer: {
+    paddingTop: 10,
+  },
+  contentText: {
+  
+  },
   imageContainer: {
     marginTop: 30,
     marginHorizontal: 15,
@@ -228,49 +248,27 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 10,
   },
-  subInfoContainer:{
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'space-between'
+  modele: {
+    fontSize: 20,
+    color: '#777',
   },
-  modele:{
-    fontSize :20,
-    color : '#777'
+  buttonContainer: {
+    flexDirection: 'row',
+    marginTop: 70,
+    justifyContent: 'space-between',
+    marginHorizontal: 25,
   },
-  description:{
-    marginTop :20,
-    backgroundColor : Colors.white,
-    marginHorizontal :10,
-    padding :20,
-    borderRadius :15
+  buyButton: {
+    backgroundColor: Colors.rose,
+    padding: 20,
+    borderRadius: 10,
+    paddingHorizontal: 50,
   },
-  descriptionTitle:{
-    fontSize :18,
-    fontWeight : 'bold',
-    marginBottom :5
+  priceButton: {
+    backgroundColor: Colors.black,
+    padding: 20,
+    borderRadius: 10,
   },
-  descriptionText:{
-    fontSize :15,
-    letterSpacing :0.7,
-    lineHeight :30
-  },
-  buttonContainer:{
-    flexDirection : 'row',
-    marginTop :70,
-    justifyContent : 'space-between',
-    marginHorizontal :25
-  },
-  buyButton:{
-    backgroundColor : Colors.rose,
-    padding :20,
-    borderRadius :10,
-    paddingHorizontal :50
-  },
-  priceButton:{
-    backgroundColor : Colors.black,
-    padding :20,
-    borderRadius :10
-  }
 });
 
 export default DetailsScreen;
