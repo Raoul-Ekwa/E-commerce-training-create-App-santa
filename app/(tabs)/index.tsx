@@ -2,7 +2,7 @@ import React from 'react';
 import { ImageBackground, Text, Image, TouchableOpacity, View, ScrollView, TextInput, StyleSheet, SafeAreaView } from 'react-native';
 import { Stack } from 'expo-router';
 import Colors from '@/constants/Colors';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import PhotoAndShoesScreen from '@/components/PhotoAndShoesScrenn';
 import HomeImageBackground from '@/components/HomeImageBackground';
 
@@ -48,7 +48,7 @@ const Page = () => {
             headerTitle: () => (
               <Image
                 source={require('../../assets/images/logo_santaLucia.png')} // Assurez-vous que le chemin d'image est correct
-                style={{ width: 200, height:130 , marginTop: 65 }} // Ajuste la taille du logo
+                style={{ width: 160, height:110 , marginTop: 60, marginLeft: 60 }} // Ajuste la taille du logo
               />
             ),
           }}
@@ -67,20 +67,22 @@ const Page = () => {
             <View style={styles.searchBar}>
               <Ionicons name="search" size={18} style={{ marginRight: 10, color: Colors.black }} />
               <TextInput placeholder="Recherche un produit" />
+
+              <View style={{marginLeft: 150}}>
+                <TouchableOpacity onPress={() => {}}>
+                  <MaterialCommunityIcons name="image-filter-center-focus-strong-outline" size={20} style={styles.filterButton} />
+                </TouchableOpacity>
+              </View>
+
             </View>
 
-            <TouchableOpacity onPress={() => {}}>
-              <Ionicons name="options" size={20} style={styles.filterButton} />
-            </TouchableOpacity>
+            
           </View> 
         <HomeImageBackground />
-       <PhotoAndShoesScreen /> 
-
+       <PhotoAndShoesScreen />
       
      </ScrollView>
       
-    
-     
     </SafeAreaView>
   );
 };
@@ -103,23 +105,21 @@ const styles = StyleSheet.create({
   searchSectionWrapper: {
     flexDirection: 'row',
     marginVertical: 5,
-    gap: 20,
     marginHorizontal: 10,
     alignItems: 'center'
   },
   searchBar: {
     flex: 1,
     flexDirection: 'row',
-    padding: 16,
+    padding: 5,
     backgroundColor: Colors.white,
     borderRadius: 20,
     alignItems:'center'
   },
   filterButton: {
-    backgroundColor: Colors.rose,
     padding: 16,
     borderRadius: 10,
-    color: Colors.white,
+    color: Colors.black,
   },
   
 });

@@ -1,4 +1,3 @@
-// components/PhotoAndShoesScreen.tsx
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { useRouter } from 'expo-router'; // Utilisation de useRouter
@@ -57,39 +56,53 @@ const PhotoAndShoesScreen = () => {
   );
 
   return (
-    <View style={styles.container}>
-      {/* Section Bons Plans */}
-      <View style={styles.sectionHeader}>
-        <Text style={styles.sectionTitle}>Nos Bons Plans</Text>
-        <TouchableOpacity style={styles.voirPlusButton} onPress={() => router.push('/Bon Plans')}>
-          <Text>Voir plus</Text>
-          <AntDesign name="right" size={10} color="black" />
-        </TouchableOpacity>
-      </View>
-      <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={photoDataState}
-        renderItem={renderPhotoItem}
-        keyExtractor={(item) => item.id.toString()}
-      />
-
+    <>
       {/* Section Promotions Chaussures */}
-      <View style={styles.sectionHeader}>
+      <View style={styles.bonplansSection}>
         <Text style={styles.sectionTitle}>Promotion en cours</Text>
         <TouchableOpacity style={styles.voirPlusButton} onPress={() => router.push('/Promotions')}>
           <Text>Voir plus</Text>
           <AntDesign name="right" size={10} color="black" />
         </TouchableOpacity>
       </View>
-      <FlatList
+      <FlatList style={{marginTop: 15}}
         horizontal
         showsHorizontalScrollIndicator={false}
         data={shoesDataState}
         renderItem={renderShoesItem}
         keyExtractor={(item) => item.id.toString()}
       />
-    </View>
+
+      {/* Section Bons Plans */}
+      <View style={styles.bonplansSection}>
+        <Text style={styles.sectionTitle}>Nos Bons Plans</Text>
+        <TouchableOpacity style={styles.voirPlusButton} onPress={() => router.push('/Bon Plans')}>
+          <Text>Voir plus</Text>
+          <AntDesign name="right" size={10} color="black" />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.weekGenereuseContainer}>
+          
+          <View style={styles.weekGenereuse}>
+            <Text style={{fontSize:20, color:'#fff'}}>Semaine</Text>
+            <Text style={{fontSize:20, color:'#fff'}}>Genereuse</Text>
+            <Text style={{fontSize:18, color:'#fff'}}>Product are</Text>
+            <Text style={{fontSize:18, color:'#fff'}}>priced for 40%</Text>
+          </View>
+        
+          <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={photoDataState}
+          renderItem={renderPhotoItem}
+          keyExtractor={(item) => item.id.toString()}
+          style={styles.list}
+        />
+        
+      </View>
+
+    </>
   );
 };
 
@@ -100,9 +113,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     flex: 1,
   },
-  sectionHeader: {
+  promotionSection: {
     padding: 10,
-    marginTop: 15,
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  bonplansSection: {
+    padding: 10,
+    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -127,7 +147,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
-    elevation: 3,
+    //elevation: 3,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
@@ -152,5 +172,27 @@ const styles = StyleSheet.create({
     gap: 5,
     textAlign: 'center',
     alignItems: 'center',
+  },
+  weekGenereuseContainer: {
+    flexDirection: 'row',
+
+  },
+  weekGenereuse: {
+    backgroundColor: Colors.roseDark,
+    marginLeft: 10,
+    borderRadius: 10,
+    padding: 10,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    //elevation: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    gap: 10,
+  },
+  list: {
+    
   },
 });

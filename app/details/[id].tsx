@@ -34,7 +34,7 @@ const DetailsScreen = () => {
   // Convertir l'ID en nombre entier
   const itemId = parseInt(id, 10);
 
-  // Recherche de l'élément correspondant dans les tableaux `photoData` et `shoesData`
+  // Recherche de l'élément correspondant dans les tableaux photoData et shoesData
   const item = [...photoData, ...shoesData].find((item) => item.id === itemId);
 
   // Si aucun élément n'est trouvé, afficher un message d'erreur
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 20,
-    marginTop: 10,
+    marginTop: 20,
   },
   textContainer: {
     alignItems: 'center',
@@ -272,3 +272,5 @@ const styles = StyleSheet.create({
 });
 
 export default DetailsScreen;
+
+ 

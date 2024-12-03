@@ -1,6 +1,9 @@
 import React, { useState } from 'react'; 
-import { ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native'; 
+import { Dimensions, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native'; 
 import Colors from '@/constants/Colors'; 
+
+const { width } = Dimensions.get('window');
+const IMG_HEIGHT = 200;
 
 const HomeImageBackground = () => {
   // Définition du tableau d'URLs des images à afficher dans le carrousel
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
   },
   imageBackground: {
-    width: 400,  // Largeur de chaque image dans le carrousel
+    width: 380,  // Largeur de chaque image dans le carrousel
     height: 200, // Hauteur de chaque image dans le carrousel
     borderRadius: 10,  
     marginHorizontal: 5, // Espacement horizontal entre les images
