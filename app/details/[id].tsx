@@ -85,7 +85,7 @@ const DetailsScreen = () => {
             <TouchableOpacity onPress={() => router.back()} >
               <View style={styles.iconHeaderLeft}>
                 <Feather name="arrow-left" size={30} />
-                <Text style={styles.headerText}>Détailssssss du produit</Text>
+                <Text style={styles.headerText}>Détails du produit</Text>
               </View>
             </TouchableOpacity>
           ),
